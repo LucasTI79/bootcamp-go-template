@@ -1,5 +1,7 @@
 PACKAGES_PATH = $(shell go list -f '{{ .Dir }}' ./...)
 
+default: start
+
 .PHONY: all
 all: ensure-deps fmt test
 

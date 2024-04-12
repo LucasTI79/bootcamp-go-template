@@ -2,7 +2,7 @@ package domain
 
 // Product represents an underlying URL with statistics on how it is used.
 type Product struct {
-	ID             int     `json:"id"`
+	ID             int     `json:"id" db:"product_id"`
 	Description    string  `json:"description"`
 	ExpirationRate int     `json:"expiration_rate"`
 	FreezingRate   int     `json:"freezing_rate"`
@@ -12,6 +12,6 @@ type Product struct {
 	ProductCode    string  `json:"product_code"`
 	RecomFreezTemp float32 `json:"recommended_freezing_temperature"`
 	Width          float32 `json:"width"`
-	ProductTypeID  int     `json:"product_type_id"`
-	SellerID       int     `json:"seller_id"`
+	ProductTypeID  int     `json:"product_type_id" db:"fk_product_type_id"`
+	SellerID       int     `json:"seller_id" db:"fk_seller_id"`
 }

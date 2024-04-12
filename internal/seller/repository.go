@@ -46,7 +46,7 @@ func (r *repository) GetAll(ctx context.Context) ([]domain.Seller, error) {
 }
 
 func (r *repository) Get(ctx context.Context, id int) (domain.Seller, error) {
-	query := "SELECT * FROM sellers WHERE id=?;"
+	query := "SELECT * FROM sellers WHERE seller_id=?;"
 	row := r.db.QueryRow(query, id)
 	s := domain.Seller{}
 	err := row.Scan(&s.ID, &s.CID, &s.CompanyName, &s.Address, &s.Telephone)
@@ -85,7 +85,7 @@ func (r *repository) Save(ctx context.Context, s domain.Seller) (int, error) {
 }
 
 func (r *repository) Update(ctx context.Context, s domain.Seller) error {
-	query := "UPDATE sellers SET cid=?, company_name=?, address=?, telephone=? WHERE id=?"
+	query := "UPDATE sellers SET cid=?, company_name=?, address=?, telephone=? WHERE seller_id=?"
 	stmt, err := r.db.Prepare(query)
 	if err != nil {
 		return err
@@ -105,7 +105,7 @@ func (r *repository) Update(ctx context.Context, s domain.Seller) error {
 }
 
 func (r *repository) Delete(ctx context.Context, id int) error {
-	query := "DELETE FROM sellers WHERE id=?"
+	query := "DELETE FROM sellers WHERE seller_id=?"
 	stmt, err := r.db.Prepare(query)
 	if err != nil {
 		return err

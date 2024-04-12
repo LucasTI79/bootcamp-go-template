@@ -46,7 +46,7 @@ func (r *repository) GetAll(ctx context.Context) ([]domain.Warehouse, error) {
 }
 
 func (r *repository) Get(ctx context.Context, id int) (domain.Warehouse, error) {
-	query := "SELECT * FROM warehouses WHERE id=?;"
+	query := "SELECT * FROM warehouses WHERE warehouse_id=?;"
 	row := r.db.QueryRow(query, id)
 	w := domain.Warehouse{}
 	err := row.Scan(&w.ID, &w.Address, &w.Telephone, &w.WarehouseCode, &w.MinimumCapacity, &w.MinimumTemperature)
@@ -85,7 +85,7 @@ func (r *repository) Save(ctx context.Context, w domain.Warehouse) (int, error) 
 }
 
 func (r *repository) Update(ctx context.Context, w domain.Warehouse) error {
-	query := "UPDATE warehouses SET address=?, telephone=?, warehouse_code=?, minimum_capacity=?, minimum_temperature=? WHERE id=?"
+	query := "UPDATE warehouses SET address=?, telephone=?, warehouse_code=?, minimum_capacity=?, minimum_temperature=? WHERE warehouse_id=?"
 	stmt, err := r.db.Prepare(query)
 	if err != nil {
 		return err
@@ -105,7 +105,7 @@ func (r *repository) Update(ctx context.Context, w domain.Warehouse) error {
 }
 
 func (r *repository) Delete(ctx context.Context, id int) error {
-	query := "DELETE FROM warehouses WHERE id=?"
+	query := "DELETE FROM warehouses WHERE warehouse_id=?"
 	stmt, err := r.db.Prepare(query)
 	if err != nil {
 		return err
