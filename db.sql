@@ -35,7 +35,7 @@ create table sections(
     current_capacity int not null,
     minimum_capacity int not null,
     maximum_capacity int not null,
-    warehouse_id int not null,
+    fk_warehouse_id int not null,
     fk_product_type_id int not null
 );
 create table sellers(
