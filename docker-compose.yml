@@ -1,6 +1,6 @@
 version: '3.8'
 volumes:
-  mysql_vol: {}
+  mysql_data: {}
 services:
   database:
     build:
@@ -14,4 +14,4 @@ services:
       MYSQL_PASSWORD: Meli_Sprint#123
       MYSQL_DATABASE: melisprint
     volumes:
-      - mysql_vol:/var/lib/mysql
+      - mysql_data:/var/lib/mysql
