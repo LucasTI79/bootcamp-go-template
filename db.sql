@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS warehouses(
 
 CREATE TABLE IF NOT EXISTS sellers(
     `seller_id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    cid INT NOT NULL,
+    cid VARCHAR(255) NOT NULL,
     company_name TEXT NOT NULL,
     `address` TEXT NOT NULL,
     telephone VARCHAR(15) NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS sellers(
 
 CREATE TABLE IF NOT EXISTS carriers(
     `carrier_id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `cid` INT NOT NULL,
+    `cid` VARCHAR(255) NOT NULL,
     company_name TEXT NOT NULL,
     `address` TEXT NOT NULL,
     telephone VARCHAR(15) NOT NULL,
